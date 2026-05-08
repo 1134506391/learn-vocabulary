@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        const text = "Hello world, this is American English";
+        const voice = "en-US-AvaNeural";
+        fetch(`https://speech.platform.bing.com/consumer/speech/synthesize/readaloud/edge/v1?TrustedClientToken=6A38660F303240A682D4309702260D42`, {
+            method: "POST",
+            headers: { "Content-Type": "application/ssml+xml" },
+            body: `<speak version='1.0' xmlns='http://www.w3.org/2001/10/synthesis' xml:lang='en-US'><voice name='${voice}'>${text}</voice></speak>`
+        }).then(res => res.blob()).then(blob => {
+            new Audio(URL.createObjectURL(blob)).play();
+        });
+
+    </script>
+</body>
+
+</html>
