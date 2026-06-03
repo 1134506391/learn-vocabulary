@@ -502,4 +502,164 @@ async function confirmDeleteChapter(chName) {
   display: flex;
   justify-content: flex-end;
 }
+
+/* ── Mobile Responsive ── */
+@media (max-width: 768px) {
+  .wordlist-layout {
+    flex-direction: column;
+    height: auto;
+  }
+
+  /* Chapter sidebar becomes top bar */
+  .chapter-sidebar {
+    width: 100%;
+    border-right: none;
+    border-bottom: 1px solid #e4e7ed;
+    padding: 12px 16px;
+    overflow-y: visible;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 4px;
+  }
+
+  .chapter-sidebar-title {
+    width: 100%;
+    padding: 0 0 8px;
+  }
+
+  .chapter-item {
+    width: auto;
+    padding: 6px 12px;
+    flex-shrink: 0;
+  }
+
+  .chapter-item-wrap {
+    width: auto;
+  }
+
+  .chapter-item-wrap .chapter-item {
+    border-radius: 7px 0 0 7px;
+    padding: 6px 10px;
+  }
+
+  .chapter-name {
+    max-width: 80px;
+    font-size: 12px;
+  }
+
+  .chapter-count {
+    font-size: 10px;
+  }
+
+  .chapter-progress-bar {
+    display: none;
+  }
+
+  .chapter-delete-btn {
+    margin-right: 0;
+    opacity: 1;
+    width: 24px;
+    height: 24px;
+  }
+
+  /* Main content */
+  .wordlist-main {
+    padding: 16px;
+    height: calc(100vh - 60px);
+  }
+
+  .wordlist-header {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .page-title {
+    font-size: 18px;
+  }
+
+  .page-desc {
+    font-size: 12px;
+  }
+
+  .filter-row {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+  }
+
+  .search-input {
+    width: 100%;
+  }
+
+  /* Word grid becomes single column */
+  .word-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .word-card {
+    padding: 12px 14px;
+  }
+
+  .word-card-top {
+    flex-wrap: wrap;
+  }
+
+  .word-en {
+    font-size: 14px;
+  }
+
+  .word-zh {
+    font-size: 12px;
+  }
+
+  .word-sentence {
+    font-size: 11px;
+  }
+
+  .word-chapter-badge {
+    font-size: 10px;
+    padding: 1px 4px;
+  }
+
+  .saved-translation {
+    font-size: 10px;
+  }
+
+  .word-card-actions .el-button {
+    font-size: 12px;
+    padding: 4px 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .chapter-sidebar {
+    padding: 10px 12px;
+  }
+
+  .chapter-item {
+    padding: 5px 10px;
+  }
+
+  .chapter-name {
+    max-width: 60px;
+    font-size: 11px;
+  }
+
+  .wordlist-main {
+    padding: 12px;
+  }
+
+  .word-card {
+    padding: 10px 12px;
+  }
+
+  .word-en {
+    font-size: 13px;
+  }
+
+  .word-card-actions .el-button {
+    width: 100%;
+  }
+}
 </style>

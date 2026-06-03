@@ -536,4 +536,179 @@ const chapterSelectLabel = computed(() =>
   justify-content: center;
   padding-top: 60px;
 }
+
+/* ── Mobile Responsive ── */
+@media (max-width: 768px) {
+  .practice-wrap {
+    padding: 16px;
+    max-width: 100%;
+  }
+
+  .chapter-bar {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .chapter-bar-label {
+    width: 100%;
+    font-size: 12px;
+  }
+
+  .chapter-select {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .progress-bar-wrap {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .progress-bar-track {
+    width: 100%;
+  }
+
+  .progress-label {
+    width: 100%;
+    text-align: left;
+  }
+
+  .practice-card {
+    padding: 20px 16px;
+  }
+
+  .step-indicator {
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .step-badge {
+    font-size: 10px;
+    padding: 2px 6px;
+  }
+
+  .step-desc {
+    font-size: 12px;
+  }
+
+  .word-tag-wrap {
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 16px;
+  }
+
+  .word-tag {
+    font-size: 13px;
+  }
+
+  .word-chapter-tag {
+    font-size: 10px;
+  }
+
+  .sentence-block {
+    padding: 14px;
+    margin-bottom: 16px;
+  }
+
+  .en-sentence {
+    font-size: 16px;
+    line-height: 1.5;
+  }
+
+  .user-zh-block {
+    padding: 14px;
+    margin-bottom: 16px;
+  }
+
+  .user-zh-text {
+    font-size: 15px;
+  }
+
+  .input-section {
+    margin-bottom: 16px;
+  }
+
+  .input-label {
+    font-size: 12px;
+  }
+
+  .action-row {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .action-row .el-button {
+    flex: 1;
+    min-width: calc(50% - 4px);
+  }
+
+  .step3-actions {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .step3-right {
+    width: 100%;
+    gap: 8px;
+  }
+
+  .step3-right .el-button {
+    flex: 1;
+  }
+
+  .compare-block {
+    gap: 10px;
+    margin-bottom: 14px;
+  }
+
+  .compare-item {
+    padding: 12px;
+  }
+
+  .compare-text {
+    font-size: 14px;
+  }
+
+  .compare-hint {
+    font-size: 12px;
+    padding: 8px 12px;
+    margin-bottom: 16px;
+  }
+
+  .nav-row {
+    margin-top: 16px;
+    padding: 0;
+  }
+
+  .nav-counter {
+    font-size: 13px;
+  }
+
+  .nav-btn {
+    font-size: 13px;
+  }
+
+  .empty-state {
+    padding-top: 40px;
+  }
+}
+
+@media (max-width: 480px) {
+  .practice-card {
+    padding: 16px 14px;
+  }
+
+  .action-row .el-button {
+    width: 100%;
+    min-width: 100%;
+  }
+
+  .step3-right {
+    flex-direction: column;
+  }
+
+  .step3-right .el-button {
+    width: 100%;
+  }
+}
 </style>

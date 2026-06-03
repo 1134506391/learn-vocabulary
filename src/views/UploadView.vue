@@ -421,4 +421,141 @@ Fossil, I know that the majority of the energy we consume comes from fossil fuel
   font-size: 13px;
   color: #909399;
 }
+
+/* ── Mobile Responsive ── */
+@media (max-width: 768px) {
+  .upload-wrap {
+    padding: 16px;
+    max-width: 100%;
+  }
+
+  .page-title {
+    font-size: 18px;
+  }
+
+  .page-desc {
+    font-size: 12px;
+  }
+
+  .format-example {
+    padding: 12px;
+  }
+
+  .format-code {
+    font-size: 12px;
+  }
+
+  .chapter-input-wrap {
+    padding: 12px;
+  }
+
+  .chapter-input-label {
+    flex-wrap: wrap;
+    gap: 4px;
+  }
+
+  .chapter-input-hint {
+    font-size: 11px;
+  }
+
+  .upload-actions {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .upload-actions .el-button {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .or-divider {
+    display: none;
+  }
+
+  .hint {
+    width: 100%;
+    text-align: center;
+  }
+
+  .paste-area {
+    min-height: 120px;
+  }
+
+  .preview-section {
+    padding: 12px;
+  }
+
+  .preview-header {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .preview-title {
+    font-size: 13px;
+  }
+
+  .preview-item {
+    padding: 8px;
+    gap: 8px;
+  }
+
+  .preview-index {
+    min-width: 22px;
+    height: 22px;
+    font-size: 10px;
+  }
+
+  .preview-word {
+    font-size: 13px;
+  }
+
+  .preview-zh {
+    font-size: 12px;
+  }
+
+  .preview-en {
+    font-size: 12px;
+  }
+
+  .stats-section {
+    padding: 16px 12px;
+    gap: 8px;
+  }
+
+  .stats-num {
+    font-size: 22px;
+  }
+
+  .stats-label {
+    font-size: 12px;
+  }
+
+  .stats-divider {
+    height: 30px;
+  }
+
+  .danger-zone {
+    padding: 14px;
+  }
+
+  .danger-row {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .danger-desc {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .stats-section {
+    flex-direction: column;
+  }
+
+  .stats-divider {
+    width: 60px;
+    height: 1px;
+  }
+}
 </style>

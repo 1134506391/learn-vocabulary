@@ -1,0 +1,539 @@
+/* VS Code Dark Theme Variables */
+:root {
+  --bg-primary: #f0f2f5;
+  --bg-secondary: #ffffff;
+  --bg-tertiary: #f5f7fa;
+  --bg-sidebar: #0f1629;
+  --text-primary: #1d2129;
+  --text-secondary: #606266;
+  --text-tertiary: #909399;
+  --border-color: #e4e7ed;
+  --accent-color: #409eff;
+  --success-color: #67c23a;
+  --warning-color: #e6a23c;
+  --danger-color: #f56c6c;
+}
+
+/* Remove default element min-width for better mobile adaptation */
+* {
+  min-width: 0;
+}
+
+html, body {
+  width: 100%;
+  min-width: 0;
+  overflow-x: hidden;
+}
+
+/* VS Code Dark Theme - 更贴近vscode默认暗色主题 */
+.dark {
+  --bg-primary: #1e1e1e;      /* VS Code 编辑器背景 */
+  --bg-secondary: #252526;    /* VS Code 侧边栏/面板背景 */
+  --bg-tertiary: #2d2d30;     /* VS Code 选中项/弹窗背景 */
+  --bg-sidebar: #1e1e1e;      /* 侧边栏背景 */
+  --text-primary: #d4d4d4;    /* VS Code 默认文字 */
+  --text-secondary: #9d9d9d;  /* VS Code 注释/次要文字 */
+  --text-tertiary: #6b6b6b;   /* VS Code 弱化文字 */
+  --border-color: #3c3c3c;    /* VS Code 边框颜色 */
+  --accent-color: #569cd6;    /* VS Code 关键字蓝色 */
+  --success-color: #6a9955;   /* VS Code 注释绿色 */
+  --warning-color: #ce9178;   /* VS Code 字符串橙色 */
+  --danger-color: #f14c4c;    /* 错误红色 */
+}
+
+/* Apply theme variables globally */
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Dark theme sidebar */
+.dark .sidebar {
+  background: var(--bg-secondary);
+}
+
+.dark .sidebar-nav {
+  background: transparent;
+}
+
+.dark .nav-item {
+  color: var(--text-secondary);
+}
+
+.dark .nav-item:hover {
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--text-primary);
+}
+
+.dark .nav-item.active {
+  background: rgba(86, 156, 214, 0.2);
+  color: var(--accent-color);
+}
+
+.dark .stat-text {
+  color: var(--text-tertiary);
+}
+
+.dark .stat-val {
+  color: var(--text-secondary);
+}
+
+.dark .done-icon { color: var(--success-color); }
+.dark .review-icon { color: var(--warning-color); }
+
+.dark .theme-toggle-btn {
+  background: var(--bg-tertiary);
+  border-color: var(--border-color);
+  color: var(--text-secondary);
+}
+
+.dark .theme-toggle-btn:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: var(--accent-color);
+}
+
+/* Dark theme main content */
+.dark .main-content {
+  background: var(--bg-primary);
+}
+
+/* Word list dark theme */
+.dark .word-card {
+  background: var(--bg-secondary);
+  border-color: var(--border-color);
+}
+
+.dark .word-en {
+  color: var(--text-primary);
+}
+
+.dark .word-zh {
+  color: var(--text-secondary);
+}
+
+.dark .word-sentence {
+  color: var(--text-tertiary);
+}
+
+.dark .word-chapter-badge {
+  background: rgba(86, 156, 214, 0.15);
+  color: var(--accent-color);
+}
+
+.dark .word-card-footer {
+  border-top-color: var(--border-color);
+}
+
+.dark .saved-translation {
+  color: var(--text-tertiary);
+}
+
+.dark .saved-label {
+  color: var(--text-secondary);
+}
+
+/* Practice view dark theme */
+.dark .practice-wrap {
+  background: var(--bg-primary);
+}
+
+.dark .practice-card {
+  background: var(--bg-secondary);
+  border-color: var(--border-color);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.dark .step-badge {
+  background: rgba(206, 145, 120, 0.2);
+  color: var(--warning-color);
+}
+
+.dark .step-desc {
+  color: var(--text-tertiary);
+}
+
+.dark .word-tag {
+  background: rgba(86, 156, 214, 0.15);
+  border-color: rgba(86, 156, 214, 0.3);
+  color: var(--accent-color);
+}
+
+.dark .word-chapter-tag {
+  background: var(--bg-tertiary);
+  border-color: var(--border-color);
+  color: var(--text-secondary);
+}
+
+.dark .sentence-block {
+  background: var(--bg-tertiary);
+}
+
+.dark .en-sentence {
+  color: var(--text-primary);
+}
+
+.dark .user-zh-block {
+  background: rgba(86, 156, 214, 0.1);
+  border-left-color: var(--accent-color);
+}
+
+.dark .user-zh-text {
+  color: var(--text-primary);
+}
+
+.dark .input-label {
+  color: var(--text-secondary);
+}
+
+.dark .compare-item.original {
+  background: rgba(106, 153, 85, 0.1);
+  border-left-color: var(--success-color);
+}
+
+.dark .compare-item.user-translation {
+  background: rgba(206, 145, 120, 0.1);
+  border-left-color: var(--warning-color);
+}
+
+.dark .compare-text {
+  color: var(--text-primary);
+}
+
+.dark .compare-hint {
+  background: var(--bg-tertiary);
+  color: var(--text-tertiary);
+}
+
+.dark .nav-counter {
+  color: var(--text-tertiary);
+}
+
+.dark .nav-btn {
+  color: var(--text-secondary);
+}
+
+.dark .empty-state .el-empty__description {
+  color: var(--text-tertiary);
+}
+
+/* Upload view dark theme */
+.dark .upload-wrap {
+  background: var(--bg-primary);
+}
+
+.dark .page-title {
+  color: var(--text-primary);
+}
+
+.dark .page-desc {
+  color: var(--text-tertiary);
+}
+
+.dark .format-example {
+  background: var(--bg-secondary);
+}
+
+.dark .format-title {
+  color: var(--text-tertiary);
+}
+
+.dark .format-code {
+  color: var(--text-primary);
+}
+
+.dark .chapter-input-wrap {
+  background: rgba(86, 156, 214, 0.1);
+  border-color: rgba(86, 156, 214, 0.2);
+}
+
+.dark .chapter-input-label {
+  color: var(--text-secondary);
+}
+
+.dark .chapter-input-hint {
+  color: var(--text-tertiary);
+}
+
+.dark .hint {
+  color: var(--text-tertiary);
+}
+
+.dark .preview-section {
+  background: var(--bg-secondary);
+  border-color: var(--border-color);
+}
+
+.dark .preview-title {
+  color: var(--text-primary);
+}
+
+.dark .preview-item {
+  background: var(--bg-tertiary);
+}
+
+.dark .preview-word {
+  color: var(--text-primary);
+}
+
+.dark .preview-zh {
+  color: var(--text-secondary);
+}
+
+.dark .preview-en {
+  color: var(--text-tertiary);
+}
+
+.dark .preview-index {
+  background: var(--border-color);
+  color: var(--text-tertiary);
+}
+
+.dark .stats-section {
+  background: var(--bg-secondary);
+  border-color: var(--border-color);
+}
+
+.dark .stats-num {
+  color: var(--text-primary);
+}
+
+.dark .stats-label {
+  color: var(--text-tertiary);
+}
+
+.dark .stats-divider {
+  background: var(--border-color);
+}
+
+.dark .danger-zone {
+  background: var(--bg-secondary);
+  border-color: rgba(241, 76, 76, 0.3);
+}
+
+.dark .danger-title {
+  color: var(--danger-color);
+}
+
+.dark .danger-desc {
+  color: var(--text-tertiary);
+}
+
+/* Word list sidebar dark theme */
+.dark .chapter-sidebar {
+  background: var(--bg-secondary);
+  border-right-color: var(--border-color);
+}
+
+.dark .chapter-sidebar-title {
+  color: var(--text-tertiary);
+}
+
+.dark .chapter-item {
+  color: var(--text-secondary);
+}
+
+.dark .chapter-item:hover {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.dark .chapter-item.active {
+  background: rgba(86, 156, 214, 0.15);
+}
+
+.dark .chapter-item.active .chapter-name {
+  color: var(--accent-color);
+}
+
+.dark .chapter-name {
+  color: var(--text-secondary);
+}
+
+.dark .chapter-count {
+  color: var(--text-tertiary);
+}
+
+.dark .chapter-progress-bar {
+  background: var(--border-color);
+}
+
+.dark .chapter-progress-fill {
+  background: linear-gradient(90deg, var(--accent-color), var(--success-color));
+}
+
+.dark .chapter-delete-btn {
+  color: var(--text-tertiary);
+}
+
+.dark .chapter-delete-btn:hover {
+  color: var(--danger-color);
+  background: rgba(241, 76, 76, 0.1);
+}
+
+.dark .wordlist-header .page-title {
+  color: var(--text-primary);
+}
+
+.dark .wordlist-header .page-desc {
+  color: var(--text-tertiary);
+}
+
+/* Element Plus component dark theme overrides */
+.dark .el-input__inner,
+.dark .el-textarea__inner {
+  background: var(--bg-tertiary);
+  border-color: var(--border-color);
+  color: var(--text-primary);
+}
+
+.dark .el-input__inner:focus,
+.dark .el-textarea__inner:focus {
+  border-color: var(--accent-color);
+}
+
+.dark .el-input__placeholder,
+.dark .el-textarea__placeholder {
+  color: var(--text-tertiary);
+}
+
+.dark .el-select__input {
+  color: var(--text-primary);
+}
+
+.dark .el-select-dropdown {
+  background: var(--bg-secondary);
+  border-color: var(--border-color);
+}
+
+.dark .el-option {
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+}
+
+.dark .el-option:hover {
+  background: var(--bg-tertiary);
+}
+
+.dark .el-tag {
+  background: var(--bg-tertiary);
+  border-color: var(--border-color);
+  color: var(--text-secondary);
+}
+
+.dark .el-tag--warning {
+  background: rgba(206, 145, 120, 0.15);
+  border-color: rgba(206, 145, 120, 0.3);
+  color: var(--warning-color);
+}
+
+.dark .el-tag--success {
+  background: rgba(106, 153, 85, 0.15);
+  border-color: rgba(106, 153, 85, 0.3);
+  color: var(--success-color);
+}
+
+.dark .el-tag--info {
+  background: rgba(86, 156, 214, 0.15);
+  border-color: rgba(86, 156, 214, 0.3);
+  color: var(--accent-color);
+}
+
+.dark .el-button {
+  background: var(--bg-tertiary);
+  border-color: var(--border-color);
+  color: var(--text-primary);
+}
+
+.dark .el-button:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: var(--accent-color);
+}
+
+.dark .el-button--primary {
+  background: var(--accent-color);
+  border-color: var(--accent-color);
+  color: #ffffff;
+}
+
+.dark .el-button--success {
+  background: var(--success-color);
+  border-color: var(--success-color);
+  color: #ffffff;
+}
+
+.dark .el-button--danger {
+  background: var(--danger-color);
+  border-color: var(--danger-color);
+  color: #ffffff;
+}
+
+.dark .el-button--text {
+  color: var(--text-secondary);
+}
+
+.dark .el-button--text:hover {
+  color: var(--text-primary);
+}
+
+.dark .el-radio-button__inner {
+  background: var(--bg-tertiary);
+  border-color: var(--border-color);
+  color: var(--text-secondary);
+}
+
+.dark .el-radio-button__inner:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.dark .el-radio-button.is-active .el-radio-button__inner {
+  background: var(--accent-color);
+  border-color: var(--accent-color);
+  color: #ffffff;
+}
+
+.dark .el-empty__description {
+  color: var(--text-tertiary);
+}
+
+.dark .el-message-box {
+  background: var(--bg-secondary);
+  border-color: var(--border-color);
+}
+
+.dark .el-message-box__title {
+  color: var(--text-primary);
+}
+
+.dark .el-message-box__message {
+  color: var(--text-secondary);
+}
+
+.dark .el-message-box__headerbtn {
+  color: var(--text-tertiary);
+}
+
+/* Scrollbar dark theme */
+.dark ::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+  background: var(--bg-primary);
+}
+
+.dark ::-webkit-scrollbar-track {
+  background: var(--bg-primary);
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: var(--border-color);
+  border-radius: 5px;
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: var(--text-tertiary);
+}
+
+/* Mobile bottom nav dark theme */
+.dark .sidebar.mobile-bottom {
+  background: var(--bg-secondary);
+  border-top-color: var(--border-color);
+}

@@ -1,12 +1,39 @@
 import { reactive, computed } from 'vue'
 
 const STORAGE_KEY = 'btWords_v1'
+const OLD_STORAGE_KEY = 'btWords'
 
 function loadFromStorage() {
   try {
+    // First try to load from the new key
     const raw = localStorage.getItem(STORAGE_KEY)
-    return raw ? JSON.parse(raw) : null
-  } catch {
+    console.log(`[WordStore] Load from ${STORAGE_KEY}: ${raw ? 'found (' + raw.length + ' chars)' : 'not found'}`)
+    
+    if (raw) {
+      try {
+        const parsed = JSON.parse(raw)
+        console.log(`[WordStore] Parsed successfully: ${Array.isArray(parsed) ? parsed.length + ' items' : 'not an array'}`)
+        return parsed
+      } catch (e) {
+        console.error(`[WordStore] JSON parse error:`, e)
+      }
+    }
+    
+    // If not found, try to migrate from the old key
+    const oldRaw = localStorage.getItem(OLD_STORAGE_KEY)
+    console.log(`[WordStore] Load from ${OLD_STORAGE_KEY}: ${oldRaw ? 'found' : 'not found'}`)
+    
+    if (oldRaw) {
+      const data = JSON.parse(oldRaw)
+      // Migrate to new key
+      localStorage.setItem(STORAGE_KEY, oldRaw)
+      console.log(`[WordStore] Migrated from ${OLD_STORAGE_KEY} to ${STORAGE_KEY}`)
+      return data
+    }
+    
+    return null
+  } catch (e) {
+    console.error(`[WordStore] Load error:`, e)
     return null
   }
 }

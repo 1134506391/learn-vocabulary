@@ -1,11 +1,13 @@
 <script setup>
-import { ref, provide } from 'vue'
+import { ref, provide, onMounted } from 'vue'
 import { useWordStore } from './composables/useWordStore'
+import { useTheme } from './composables/useTheme'
 import PracticeView from './views/PracticeView.vue'
 import WordListView from './views/WordListView.vue'
 import UploadView from './views/UploadView.vue'
 
 const { doneCount, learningCount, totalCount } = useWordStore()
+const { currentTheme, toggleTheme } = useTheme()
 
 const currentView = ref('practice')
 const wordListFilter = ref('all')
@@ -23,6 +25,10 @@ function goWordList(filter = 'all') {
   wordListFilter.value = filter
   currentView.value = 'wordlist'
 }
+
+onMounted(() => {
+  // Theme is already applied in useTheme
+})
 </script>
 
 <template>
@@ -59,6 +65,11 @@ function goWordList(filter = 'all') {
           <span class="stat-val">{{ learningCount }}</span>
         </button>
       </div>
+
+      <button class="theme-toggle-btn" @click="toggleTheme" :title="currentTheme === 'dark' ? '切换到亮色模式' : '切换到暗色模式'">
+        <span class="theme-icon">{{ currentTheme === 'dark' ? '☀️' : '🌙' }}</span>
+        <span class="theme-label">{{ currentTheme === 'dark' ? '亮色' : '暗色' }}</span>
+      </button>
     </aside>
 
     <!-- Main content -->
@@ -218,10 +229,125 @@ html, body, #app {
   font-variant-numeric: tabular-nums;
 }
 
+/* ── Theme Toggle ── */
+.theme-toggle-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  margin: 16px 24px 0;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 13px;
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s;
+}
+
+.theme-toggle-btn:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.15);
+}
+
+.theme-icon {
+  font-size: 16px;
+}
+
+.theme-label {
+  font-weight: 500;
+}
+
 /* ── Main ── */
 .main-content {
   flex: 1;
   overflow-y: auto;
   background: #f0f2f5;
+}
+
+/* ── Mobile Responsive ── */
+@media (max-width: 768px) {
+  .app-layout {
+    flex-direction: column;
+    height: 100vh;
+    position: relative;
+  }
+
+  .sidebar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 60px;
+    flex-direction: row;
+    padding: 0;
+    align-items: center;
+    justify-content: space-around;
+    z-index: 100;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    border-bottom: none;
+  }
+
+  .sidebar-brand {
+    display: none;
+  }
+
+  .sidebar-nav {
+    flex: 1;
+    flex-direction: row;
+    justify-content: space-around;
+    padding: 0;
+    gap: 0;
+    margin: 0;
+    border: none;
+  }
+
+  .nav-item {
+    flex-direction: column;
+    gap: 2px;
+    padding: 8px 16px;
+    justify-content: center;
+    align-items: center;
+    min-width: 70px;
+  }
+
+  .nav-icon {
+    font-size: 18px;
+    width: auto;
+  }
+
+  .nav-label {
+    font-size: 11px;
+    font-weight: 400;
+  }
+
+  .sidebar-stats {
+    display: none;
+  }
+
+  .theme-toggle-btn {
+    display: none;
+  }
+
+  .main-content {
+    height: calc(100vh - 60px);
+    padding-bottom: 60px;
+  }
+}
+
+@media (max-width: 480px) {
+  .nav-item {
+    min-width: 60px;
+    padding: 8px 12px;
+  }
+
+  .nav-icon {
+    font-size: 16px;
+  }
+
+  .nav-label {
+    font-size: 10px;
+  }
 }
 </style>
