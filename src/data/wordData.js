@@ -1,52 +1,41 @@
 /**
- * Parse a .txt file in the format:
- *   Word.
+ * Parse a .txt file. Supports two formats:
+ *
+ * Format A – 4-line cycle (word and sentence each on their own line,
+ *             separated by blank lines):
+ *   Word or Phrase
+ *
  *   Example sentence.
- * or
- *   Word, example sentence.
+ *
+ * Format B – word and sentence on the same line separated by a comma:
+ *   Word, Example sentence.
  */
 export function parseTxtContent(text) {
-  const lines = text.trim().split('\n').map(l => l.trim()).filter(l => l)
   const result = []
-  let i = 0
 
-  while (i < lines.length) {
-    const line = lines[i]
+  // Normalise line endings, then split into non-empty chunks separated by
+  // one or more blank lines.  Each chunk is either a word/phrase OR a sentence.
+  const normalized = text.replace(/\r\n/g, '\n').replace(/\r/g, '\n')
+  const chunks = normalized.trim().split(/\n[ \t]*\n+/).map(c => c.trim()).filter(c => c)
 
-    // "Word, sentence." format — single word or two-word phrase followed by comma
-    const commaMatch = line.match(/^([A-Za-z][a-z]*(?:\s[A-Za-z][a-z]*)?),\s+(.+)/)
-    if (commaMatch && commaMatch[1].split(' ').length <= 2) {
-      result.push({
-        word: commaMatch[1].trim(),
-        zh: '',
-        en: commaMatch[2].trim(),
-      })
-      i++
-      continue
+  // Handle Format B: a single "Word, sentence." line (no blank-line pairs needed)
+  const multiLineChunks = []
+  for (const chunk of chunks) {
+    const commaMatch = chunk.match(/^([A-Za-z][^\n,]+?),\s+(.+)/s)
+    if (commaMatch && !chunk.includes('\n')) {
+      result.push({ word: commaMatch[1].trim(), zh: '', en: commaMatch[2].trim() })
+    } else {
+      multiLineChunks.push(chunk)
     }
+  }
 
-    // "Word." format — single word (possibly hyphenated) on its own line
-    const wordMatch = line.match(/^([A-Za-z][a-zA-Z-]*)\.?$/)
-    if (wordMatch) {
-      const word = wordMatch[1]
-      const sentences = []
-      i++
-      // Collect following sentence lines until we hit the next word line
-      while (i < lines.length) {
-        const next = lines[i]
-        const isNextWord = next.match(/^([A-Za-z][a-zA-Z-]*)\.?$/) ||
-                           next.match(/^([A-Za-z][a-z]*(?:\s[A-Za-z][a-z]*)?),\s+/)
-        if (isNextWord) break
-        sentences.push(next)
-        i++
-      }
-      if (sentences.length > 0) {
-        result.push({ word, zh: '', en: sentences.join(' ') })
-      }
-      continue
+  // Format A: chunks alternate as word, sentence, word, sentence …
+  for (let i = 0; i + 1 < multiLineChunks.length; i += 2) {
+    const word = multiLineChunks[i].replace(/\.$/, '').trim()
+    const en   = multiLineChunks[i + 1].trim()
+    if (word && en) {
+      result.push({ word, zh: '', en })
     }
-
-    i++
   }
 
   return result
