@@ -16,9 +16,9 @@ const wordListFilter = ref('all')
 provide('wordListFilter', wordListFilter)
 
 const navItems = [
-  { key: 'practice', icon: '◈', label: '回译练习' },
-  { key: 'wordlist', icon: '◉', label: '单词总览' },
-  { key: 'upload', icon: '⇑', label: '上传词表' },
+  { key: 'practice', icon: '◈', label: 'back translation practice' },
+  { key: 'wordlist', icon: '◉', label: 'word list overview' },
+  { key: 'upload', icon: '⇑', label: 'upload word list' },
 ]
 
 function goWordList(filter = 'all') {
@@ -36,7 +36,7 @@ onMounted(() => {
     <!-- Sidebar -->
     <aside class="sidebar">
       <div class="sidebar-brand">
-        <div class="brand-title">回译</div>
+        <div class="brand-title">Back Translation</div>
         <div class="brand-subtitle">Back Translation</div>
       </div>
 
@@ -56,19 +56,19 @@ onMounted(() => {
       <div class="sidebar-stats">
         <button class="stat-row stat-clickable" @click="goWordList('done')">
           <span class="stat-icon done-icon">✦</span>
-          <span class="stat-text">已掌握</span>
+          <span class="stat-text">mastered</span>
           <span class="stat-val">{{ doneCount }} / {{ totalCount }}</span>
         </button>
         <button class="stat-row stat-clickable" @click="goWordList('learning')">
           <span class="stat-icon review-icon">◎</span>
-          <span class="stat-text">待复习</span>
+          <span class="stat-text">to review</span>
           <span class="stat-val">{{ learningCount }}</span>
         </button>
       </div>
 
-      <button class="theme-toggle-btn" @click="toggleTheme" :title="currentTheme === 'dark' ? '切换到亮色模式' : '切换到暗色模式'">
+      <button class="theme-toggle-btn" @click="toggleTheme" :title="currentTheme === 'dark' ? 'switch to light mode' : 'switch to dark mode'">
         <span class="theme-icon">{{ currentTheme === 'dark' ? '☀️' : '🌙' }}</span>
-        <span class="theme-label">{{ currentTheme === 'dark' ? '亮色' : '暗色' }}</span>
+        <span class="theme-label">{{ currentTheme === 'dark' ? 'light' : 'dark' }}</span>
       </button>
     </aside>
 

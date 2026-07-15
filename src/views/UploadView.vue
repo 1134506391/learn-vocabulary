@@ -69,12 +69,12 @@ async function handleReset() {
 <template>
   <div class="upload-wrap">
     <div class="upload-header">
-      <h2 class="page-title">上传词表</h2>
+      <h2 class="page-title">upload word list</h2>
       <p class="page-desc">支持 .txt 文件上传或直接粘贴文本。每组词汇格式：单词单独一行，例句另起一行；或"单词, 例句"写在同一行。</p>
     </div>
 
     <div class="format-example">
-      <div class="format-title">格式示例</div>
+      <div class="format-title">format example</div>
       <pre class="format-code">Galaxy.
 The sun is only a very small star in the galaxy.
 

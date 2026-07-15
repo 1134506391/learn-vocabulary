@@ -139,14 +139,14 @@ const progressPercent = computed(() =>
 )
 
 const stepLabels = {
-  1: { num: '01', desc: '阅读英文，翻译成中文' },
-  2: { num: '02', desc: '只看中文，回译成英文' },
-  3: { num: '03', desc: '对比原文，查漏补缺' },
+  1: { num: '01', desc: 'read English, translate to Chinese' },
+  2: { num: '02', desc: 'only see Chinese, back-translate to English' },
+  3: { num: '03', desc: 'compare original and back-translation' },
 }
 
 const chapterSelectLabel = computed(() =>
   selectedChapter.value === '__all__'
-    ? `全部词汇（${words.value.length}）`
+    ? `all words（${words.value.length}）`
     : `${selectedChapter.value}（${wordsInChapter.value.length}）`
 )
 </script>
@@ -156,14 +156,14 @@ const chapterSelectLabel = computed(() =>
 
     <!-- Chapter selector bar -->
     <div class="chapter-bar">
-      <span class="chapter-bar-label">练习章节</span>
+      <span class="chapter-bar-label">Practice chapter</span>
       <el-select
         v-model="selectedChapter"
         size="small"
         class="chapter-select"
         :placeholder="chapterSelectLabel"
       >
-        <el-option value="__all__" :label="`全部词汇（${words.length}）`" />
+        <el-option value="__all__" :label="`all words（${words.length}）`" />
         <el-option
           v-for="ch in chapterList"
           :key="ch"
@@ -178,7 +178,7 @@ const chapterSelectLabel = computed(() =>
       <div class="progress-bar-track">
         <div class="progress-bar-fill" :style="{ width: progressPercent + '%' }" />
       </div>
-      <span class="progress-label">{{ chapterDoneCount }}/{{ wordsInChapter.length }} 已掌握</span>
+      <span class="progress-label">{{ chapterDoneCount }}/{{ wordsInChapter.length }} has been mastered</span>
     </div>
 
     <!-- Practice card -->
@@ -204,19 +204,19 @@ const chapterSelectLabel = computed(() =>
           <p class="en-sentence">{{ currentWord.en }}</p>
         </div>
         <div class="input-section">
-          <div class="input-label">你的中文翻译</div>
+          <div class="input-label">your Chinese translation</div>
           <el-input
             v-model="inputZh"
             type="textarea"
             :rows="4"
-            placeholder="把上面的英文句子翻译成中文..."
+            placeholder="translate the above English sentence to Chinese..."
             resize="none"
           />
         </div>
         <div class="action-row">
-          <el-button @click="skipWord" plain>跳过</el-button>
+          <el-button @click="skipWord" plain>skip</el-button>
           <el-button type="primary" @click="completeStep1" :disabled="!inputZh.trim()">
-            完成，进入第 2 步 →
+            complete, enter step 2 →
           </el-button>
         </div>
       </template>
@@ -224,23 +224,23 @@ const chapterSelectLabel = computed(() =>
       <!-- Step 2: Only see Chinese, back-translate to English -->
       <template v-else-if="currentStep === 2">
         <div class="user-zh-block">
-          <div class="block-label">你的中文翻译</div>
+          <div class="block-label">Your Chinese translation</div>
           <p class="user-zh-text">{{ savedUserZh || currentWord.userZh }}</p>
         </div>
         <div class="input-section">
-          <div class="input-label">你的英文回译</div>
+          <div class="input-label">your English back-translation</div>
           <el-input
             v-model="inputEn"
             type="textarea"
             :rows="4"
-            placeholder="根据上面的中文，回译成英文（不能偷看原句）..."
+            placeholder="back-translate the above Chinese sentence to English (no cheating)..."
             resize="none"
           />
         </div>
         <div class="action-row">
-          <el-button @click="skipWord" plain>跳过</el-button>
+          <el-button @click="skipWord" plain>skip</el-button>
           <el-button type="primary" @click="completeStep2" :disabled="!inputEn.trim()">
-            完成，进入第 3 步 →
+            complete, enter step 3 →
           </el-button>
         </div>
       </template>
@@ -249,23 +249,23 @@ const chapterSelectLabel = computed(() =>
       <template v-else-if="currentStep === 3">
         <div class="compare-block">
           <div class="compare-item original">
-            <span class="compare-label">原文</span>
+            <span class="compare-label">original</span>
             <p class="compare-text">{{ currentWord.en }}</p>
           </div>
           <div class="compare-item user-translation">
-            <span class="compare-label">你的回译</span>
+            <span class="compare-label">your back-translation</span>
             <p class="compare-text">{{ currentWord.userEn }}</p>
           </div>
         </div>
         <div class="compare-hint">
           <el-icon><InfoFilled /></el-icon>
-          对比关键词与句式，找出自己表达的差距，重点记忆
+            compare keywords and sentence patterns, find the gaps in your expression, and focus on memorization
         </div>
         <div class="action-row step3-actions">
-          <el-button @click="retryWord" plain>重新练习</el-button>
+          <el-button @click="retryWord" plain>re-practice</el-button>
           <div class="step3-right">
-            <el-button @click="markReview">加入复习</el-button>
-            <el-button type="primary" @click="markDone">标记已掌握 →</el-button>
+            <el-button @click="markReview">add to review</el-button>
+            <el-button type="primary" @click="markDone">mark as mastered →</el-button>
           </div>
         </div>
       </template>
@@ -274,21 +274,21 @@ const chapterSelectLabel = computed(() =>
     <!-- Bottom navigation -->
     <div class="nav-row" v-if="currentWord">
       <el-button text :disabled="currentIndex === 0" @click="goPrev" class="nav-btn">
-        ← 上一个
+        ← previous
       </el-button>
       <span class="nav-counter">{{ currentIndex + 1 }} / {{ wordsInChapter.length }}</span>
       <el-button text :disabled="currentIndex === wordsInChapter.length - 1" @click="goNext" class="nav-btn">
-        下一个 →
+        next →
       </el-button>
     </div>
 
     <!-- Empty state -->
     <div class="empty-state" v-else>
       <el-empty
-        :description="words.length === 0 ? '还没有词汇，请先上传词表' : '该章节暂无词汇'"
+        :description="words.length === 0 ? 'no words, please upload a word list' : 'no words in this chapter'"
         :image-size="120"
       >
-        <el-button v-if="words.length === 0" type="primary">去上传词表</el-button>
+        <el-button v-if="words.length === 0" type="primary">upload a word list</el-button>
       </el-empty>
     </div>
 
